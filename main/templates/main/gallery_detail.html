@@ -1,0 +1,17 @@
+{% extends "main/base.html" %}
+{% block title %}{{ category.name }} — Kumaran's Gallery{% endblock %}
+{% block content %}
+<section class="collection-page section-wrap">
+    <a class="back-link" href="{% url 'home' %}#gallery">← All collections</a>
+    <div class="collection-heading"><p class="eyebrow">A PRIVATE COLLECTION</p><h1>{{ category.name }}</h1><p>A few moments, kept close.</p></div>
+    {% if images %}
+    <div class="photo-grid">
+        {% for photo in images %}
+        <figure class="photo-tile"><img src="{{ photo.image.url }}" alt="{{ photo.title }}" loading="lazy"><figcaption>{{ photo.title }}</figcaption></figure>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state"><span class="empty-icon">✳</span><h3>Photos are on their way.</h3><p>This collection is still being gathered.</p></div>
+    {% endif %}
+</section>
+{% endblock %}

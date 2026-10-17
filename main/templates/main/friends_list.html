@@ -1,0 +1,20 @@
+{% extends "main/base.html" %}
+{% block title %}Friends — Kumaran's Gallery{% endblock %}
+{% block content %}
+<section class="friends-page section-wrap">
+    <a class="back-link" href="{% url 'home' %}">← Back to the gallery</a>
+    <div class="collection-heading"><p class="eyebrow">THE PEOPLE WHO MAKE THE MOMENTS</p><h1>My favourite <em>people.</em></h1><p>Every good story has good people in it.</p></div>
+    {% if friends %}
+    <div class="friends-grid">
+        {% for friend in friends %}
+        <a class="friend-card" href="{% url 'friend_detail' friend.slug %}">
+            <div class="friend-avatar"><img src="{{ friend.dp.url }}" alt="Portrait of {{ friend.name }}" loading="lazy"></div>
+            <span class="friend-name">{{ friend.name }}</span><span class="friend-link">Read their story ↗</span>
+        </a>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state"><span class="empty-icon">✳</span><h3>The best stories are shared.</h3><p>Friend profiles will be here soon.</p></div>
+    {% endif %}
+</section>
+{% endblock %}

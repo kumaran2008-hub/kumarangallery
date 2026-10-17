@@ -1,0 +1,22 @@
+{% extends "main/base.html" %}
+{% block title %}{{ friend.name }} — Kumaran's Gallery{% endblock %}
+{% block content %}
+<section class="friend-detail section-wrap">
+    <a class="back-link" href="{% url 'friends_list' %}">← All friends</a>
+    <header class="friend-hero">
+        <div class="friend-detail-avatar"><img src="{{ friend.dp.url }}" alt="Portrait of {{ friend.name }}"></div>
+        <div><p class="eyebrow">A PERSON IN MY STORIES</p><h1>{{ friend.name }}</h1><p class="friend-photo-count">{{ friend.photos.count }} MOMENTS SHARED</p></div>
+    </header>
+    <article class="story-box"><p class="eyebrow">A LITTLE STORY</p><div class="story-text">{{ friend.story|linebreaks }}</div></article>
+    <div class="friend-gallery-title"><p class="eyebrow">THE PHOTO ALBUM</p><h2>Little moments, <em>together.</em></h2></div>
+    {% if friend.photos.all %}
+    <div class="photo-grid">
+        {% for photo in friend.photos.all %}
+        <figure class="photo-tile"><img src="{{ photo.image.url }}" alt="{{ photo.caption|default:'A moment with '|add:friend.name }}" loading="lazy">{% if photo.caption %}<figcaption>{{ photo.caption }}</figcaption>{% endif %}</figure>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state"><h3>More memories to come.</h3><p>Photos will appear here once added.</p></div>
+    {% endif %}
+</section>
+{% endblock %}
