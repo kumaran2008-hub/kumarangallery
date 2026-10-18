@@ -121,3 +121,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 # Email
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://kumarangallery-4.onrender.com',
+]
