@@ -20,3 +20,12 @@
     {% endif %}
 </section>
 {% endblock %}
+{% load static %}
+
+<!-- Profile Pictureku -->
+{% if friend.dp %}
+    <img src="{{ friend.dp.url }}" alt="{{ friend.name }}">
+{% else %}
+    <!-- Oru vela database-la illa na static folder-la irukkura image kaattum -->
+    <img src="{% static 'main/images/sub-ass.jpg' %}" alt="{{ friend.name }}">
+{% endif %}
