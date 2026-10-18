@@ -38,7 +38,7 @@ class GalleryImage(models.Model):
 class FriendProfile(models.Model):
     name = models.CharField(max_length=100)
     slug = models.SlugField(max_length=120, unique=True)
-    dp = models.ImageField(upload_to="friends/profiles/")
+    dp = models.ImageField(upload_to='friends/profiles/', blank=True, null=True)
     story = models.TextField()
 
     class Meta:
